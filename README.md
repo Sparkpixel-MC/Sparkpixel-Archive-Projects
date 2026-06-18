@@ -2,7 +2,7 @@
 
 [![Status](https://img.shields.io/badge/status-archived-red?style=for-the-badge&logo=archive)](https://github.com/Sparkpixel-MC/Sparkpixel-Archive-Projects)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=opensourceinitiative)](LICENSE)
-[![Repo Size](https://img.shields.io/github/repo-size/Sparkpixel-MC/Spark-Sparkpixel-Archive-Projects?style=for-the-badge&logo=github)](https://github.com/Sparkpixel-MC/Sparkpixel-Archive-Projects)
+[![Repo Size](https://img.shields.io/github/repo-size/Sparkpixel-MC/Sparkpixel-Archive-Projects?style=for-the-badge&logo=github)](https://github.com/Sparkpixel-MC/Sparkpixel-Archive-Projects)
 
 > A repository that contains several different archive projects that once made by our developers.  
 > 这里存放着我们团队曾经开发过的多个存档项目，供历史参考与学习。
