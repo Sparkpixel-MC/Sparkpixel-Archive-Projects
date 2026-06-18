@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赞助系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #rankings {
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>赞助系统</h1>
+    
+    <div id="donation-form">
+        <h2>提交赞助</h2>
+        <div class="form-group">
+            <label for="recipient">赞助对象：</label>
+            <input type="text" id="recipient" required>
+        </div>
+        <div class="form-group">
+            <label for="amount">赞助金额：</label>
+            <input type="number" id="amount" min="1" step="0.01" required>
+        </div>
+        <button onclick="submitDonation()">提交赞助请求</button>
+    </div>
+
+    <div id="rankings">
+        <h2>赞助排行榜</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>排名</th>
+                    <th>赞助对象</th>
+                    <th>总金额</th>
+                </tr>
+            </thead>
+            <tbody id="rankings-body">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // 加载排行榜数据
+        async function loadRankings() {
+            try {
+                const response = await fetch('/api/sponsors/ranking');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const tbody = document.getElementById('rankings-body');
+                    tbody.innerHTML = data.data.map(item => `
+                        <tr>
+                            <td>${item.rank}</td>
+                            <td>${item.recipient}</td>
+                            <td>￥${item.amount.toFixed(2)}</td>
+                        </tr>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('加载排行榜失败：', error);
+            }
+        }
+
+        // 提交赞助请求
+        async function submitDonation() {
+            const recipient = document.getElementById('recipient').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+
+            if (!recipient || !amount) {
+                alert('请填写完整信息');
+                return;
+            }
+
+            try {
+                const response = await fetch('/submit_donation', {
+                    method: 'get',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ recipient, amount })
+                });
+
+                const data = await response.json();
+                
+                if (data.success && data.redirect_url) {
+                    window.location.href = data.redirect_url;
+                } else {
+                    alert('提交失败：' + (data.message || '未知错误'));
+                }
+            } catch (error) {
+                console.error('提交失败：', error);
+                alert('提交失败，请稍后重试');
+            }
+        }
+
+        // 页面加载时获取排行榜数据
+        loadRankings();
+    </script>
+</body>
+</html> 
