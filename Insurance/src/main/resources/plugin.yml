@@ -1,0 +1,42 @@
+name: InsurancePlugin
+version: 1.0.0
+main: com.example.insurance.InsurancePlugin
+api-version: 1.21
+author: Example
+description: A Minecraft plugin for item insurance system
+folia-supported: true
+
+softdepend:
+  - Vault
+  - Towny
+
+commands:
+  insurance:
+    description: Main insurance command
+    usage: /insurance <toggle|gui|backup|admin|reload>
+    aliases: [ins]
+    permission: insurance.use
+  ins:
+    description: Insurance command alias
+    usage: /ins <toggle|gui|backup|admin|reload>
+    permission: insurance.use
+
+permissions:
+  insurance.use:
+    description: Allow using insurance commands
+    default: true
+  insurance.admin:
+    description: Allow admin insurance commands
+    default: op
+  insurance.toggle:
+    description: Allow toggling plugin feature
+    default: op
+  insurance.gui:
+    description: Allow opening insurance GUI
+    default: true
+  insurance.backup:
+    description: Allow opening backup GUI
+    default: true
+  insurance.reload:
+    description: Allow reloading configuration file
+    default: op

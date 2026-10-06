@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# 数据库
+Data.db
+
+# 配置文件（包含敏感信息）
+environment.json
+environment.json.exp
+
+# 日志文件
+server_monitor.log
+*.log
+
+# 历史数据
+max_players_history.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

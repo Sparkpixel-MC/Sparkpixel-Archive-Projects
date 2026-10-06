@@ -1,0 +1,79 @@
+# Insurance Plugin Configuration
+
+# Maximum insurance times per item (default: 10)
+max_insurance_times: 10
+
+# Base price for common items (default: 50)
+common_item_price: 50
+
+# Enchantment cost multiplier per enchantment (default: 0.10, which is 10%)
+enchantment_cost_multiplier: 0.10
+
+# Level 1 insurance cost percentage (default: 0.20, which is 20%)
+level_1_cost_percentage: 0.20
+
+# Level 2 insurance cost percentage (default: 1.0, which is 100%)
+level_2_cost_percentage: 1.0
+
+# Upgrade cost percentage (default: 0.80, which is 80%)
+upgrade_cost_percentage: 0.80
+
+# Backup recovery cost percentage (default: 10.0, which is 1000%)
+backup_recovery_cost_percentage: 10.0
+
+# Valuable items pricing (format: item_id:price)
+valuable_items:
+  diamond_sword: 500
+  diamond_pickaxe: 500
+  diamond_axe: 500
+  diamond_shovel: 500
+  diamond_hoe: 500
+  diamond_helmet: 400
+  diamond_chestplate: 400
+  diamond_leggings: 400
+  diamond_boots: 400
+  netherite_sword: 1000
+  netherite_pickaxe: 1000
+  netherite_axe: 1000
+  netherite_shovel: 1000
+  netherite_hoe: 1000
+  netherite_helmet: 800
+  netherite_chestplate: 800
+  netherite_leggings: 800
+  netherite_boots: 800
+  golden_apple: 300
+  enchanted_golden_apple: 2000
+  elytra: 3000
+  totem_of_undying: 1500
+  trident: 800
+  beacon: 3000
+  nether_star: 2000
+  dragon_egg: 5000
+
+# Permissions configuration
+# You can set which permission groups can use each command
+# Set to an empty string "" to allow everyone (default: true)
+# Set to "op" to allow only operators
+# Set to specific permission node (e.g., "insurance.admin")
+permissions:
+  use: ""  # Allow everyone to use basic insurance commands
+  admin: "op"  # Only operators can use admin commands
+  toggle: "op"  # Only operators can toggle plugin
+  gui: ""  # Allow everyone to open insurance GUI
+  backup: ""  # Allow everyone to open backup GUI
+  reload: "op"  # Only operators can reload config
+
+# Messages
+messages:
+  plugin_enabled: "§a[保险插件] 插件功能已启用"
+  plugin_disabled: "§c[保险插件] 插件功能已禁用"
+  insurance_expired: "§c§l注意，你的 %s 的保险已失效"
+  no_permission: "§c你没有权限执行此命令"
+  not_enough_money: "§c你的余额不足！需要: %s"
+  insurance_added: "§a物品保险已添加！等级: %d, 次数: %d, 费用: %s"
+  insurance_upgraded: "§a物品保险已升级！等级: %d, 费用: %s"
+  admin_insurance_added: "§a管理员保险已添加！物品将获得无限保险"
+  backup_empty: "§c你的备份为空"
+  item_recovered: "§a物品已恢复！费用: %s"
+  player_only_command: "§c此命令只能由玩家执行"
+  inventory_full: "§c你的背包已满，无法添加物品"
